@@ -1,0 +1,39 @@
+* ============================================================
+*  Lab 4 : CMOS NAND - SKY130 (1.8 V core device)
+*
+*                 vdd          vdd
+*                  |            |
+*              |---+        |---+
+*     a ----o|  MPA     b-o|  MPB      (2 parallel PMOS)
+*              |---+        |---+
+*                  |            |
+*                  +-----+------+
+*                        |
+*                        +-------- y = (a.b)'
+*                        |
+*                    |---+
+*     a ------------|  MNA            (2 series NMOS)
+*                    |---+
+*                        | n1
+*                    |---+
+*     b ------------|  MNB
+*                    |---+
+*                        |
+*                       vss
+*
+*  Sizing (um): 2 series NMOS -> Wn = 2 x 1 = 2, so the pull-down
+*  resistance equals the reference inverter (Wn=1). Parallel PMOS -> keep
+*  Wp = 2.5 (worst case: only 1 PMOS on, same as the reference inverter).
+* ============================================================
+*  ad/as/pd/ps/nrd/nrs: area, perimeter and resistance of the diffusion regions
+*  (same formulas as the xschem symbols, 0.29 um = S/D region length).
+.subckt nand a b y vdd vss params: wn=2 wp=2.5 l=0.15
+XMPA y  a vdd vdd sky130_fd_pr__pfet_01v8 W={wp} L={l}
++ ad={wp*0.29} as={wp*0.29} pd={2*(wp+0.29)} ps={2*(wp+0.29)} nrd={0.29/wp} nrs={0.29/wp}
+XMPB y  b vdd vdd sky130_fd_pr__pfet_01v8 W={wp} L={l}
++ ad={wp*0.29} as={wp*0.29} pd={2*(wp+0.29)} ps={2*(wp+0.29)} nrd={0.29/wp} nrs={0.29/wp}
+XMNA y  a n1  vss sky130_fd_pr__nfet_01v8 W={wn} L={l}
++ ad={wn*0.29} as={wn*0.29} pd={2*(wn+0.29)} ps={2*(wn+0.29)} nrd={0.29/wn} nrs={0.29/wn}
+XMNB n1 b vss vss sky130_fd_pr__nfet_01v8 W={wn} L={l}
++ ad={wn*0.29} as={wn*0.29} pd={2*(wn+0.29)} ps={2*(wn+0.29)} nrd={0.29/wn} nrs={0.29/wn}
+.ends nand

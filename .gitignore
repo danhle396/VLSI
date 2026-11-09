@@ -1,0 +1,17 @@
+# Sach giao trinh co ban quyen - khong dua len repo public
+CMOS-VLSI.pdf
+
+# File nen trung lap
+*.rar
+
+# Ket qua mo phong sinh ra (chay lai la co)
+*.log
+*.dat
+*.raw
+*.vcd
+*.vvp
+*.ext
+**/xschem/simulation/
+
+# File tam cua Office
+~$*

@@ -1,0 +1,8 @@
+** sch_path: /cygdrive/d/hoctap/fpga/verilog_school/VLSI/lab4/xschem/nand.sch
+.subckt nand a b y vdd vss
+*.PININFO a:I b:I y:O vdd:B vss:B
+XMPA y a vdd vdd sky130_fd_pr__pfet_01v8 L=0.15 W=2.5 nf=1 m=1
+XMPB y b vdd vdd sky130_fd_pr__pfet_01v8 L=0.15 W=2.5 nf=1 m=1
+XMNA y a n1 vss sky130_fd_pr__nfet_01v8 L=0.15 W=2 nf=1 m=1
+XMNB n1 b vss vss sky130_fd_pr__nfet_01v8 L=0.15 W=2 nf=1 m=1
+.ends

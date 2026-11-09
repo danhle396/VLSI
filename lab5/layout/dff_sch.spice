@@ -1,0 +1,36 @@
+** sch_path: /cygdrive/d/hoctap/fpga/verilog_school/VLSI/lab5/xschem/dff.sch
+.subckt dff d clk q qb vdd vss
+*.PININFO d:I clk:I q:O qb:O vdd:B vss:B
+Xc1 clk clkn vdd vss inv
+Xc2 clkn clkp vdd vss inv
+Xtg1 d m1 clkn clkp vdd vss tgate
+Xi1 m1 m2 vdd vss inv
+Xi2 m2 m3 vdd vss inv
+Xtg2 m3 m1 clkp clkn vdd vss tgate
+Xtg3 m2 s1 clkp clkn vdd vss tgate
+Xi3 s1 s2 vdd vss inv
+Xi4 s2 s3 vdd vss inv
+Xtg4 s3 s1 clkn clkp vdd vss tgate
+Xo2 s2 qb vdd vss inv
+Xo1 s3 q vdd vss inv
+.ends
+
+* expanding   symbol:  inv.sym # of pins=4
+** sym_path: /cygdrive/d/hoctap/fpga/verilog_school/VLSI/lab5/xschem/inv.sym
+** sch_path: /cygdrive/d/hoctap/fpga/verilog_school/VLSI/lab5/xschem/inv.sch
+.subckt inv in out vdd vss
+*.PININFO in:I out:O vdd:B vss:B
+XMP out in vdd vdd sky130_fd_pr__pfet_01v8 L=0.15 W=2.5 nf=1 m=1
+XMN out in vss vss sky130_fd_pr__nfet_01v8 L=0.15 W=1 nf=1 m=1
+.ends
+
+
+* expanding   symbol:  tgate.sym # of pins=6
+** sym_path: /cygdrive/d/hoctap/fpga/verilog_school/VLSI/lab5/xschem/tgate.sym
+** sch_path: /cygdrive/d/hoctap/fpga/verilog_school/VLSI/lab5/xschem/tgate.sch
+.subckt tgate x y en en_b vdd vss
+*.PININFO x:B y:B en:I en_b:I vdd:B vss:B
+XMN x en y vss sky130_fd_pr__nfet_01v8 L=0.15 W=1 nf=1 m=1
+XMP y en_b x vdd sky130_fd_pr__pfet_01v8 L=0.15 W=2.5 nf=1 m=1
+.ends
+

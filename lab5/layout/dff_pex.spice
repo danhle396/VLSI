@@ -1,0 +1,119 @@
+* NGSPICE file created from dff.ext - technology: sky130A
+
+.subckt tgate x y en en_b vdd vss
+X0 y en x vss sky130_fd_pr__nfet_01v8 ad=0.57 pd=3.14 as=0.57 ps=3.14 w=1 l=0.15
+X1 y en_b x vdd sky130_fd_pr__pfet_01v8 ad=1.425 pd=6.14 as=1.425 ps=6.14 w=2.5 l=0.15
+C0 en en_b 0.01528f
+C1 vdd en_b 0.09646f
+C2 y en 0.0201f
+C3 en_b x 0.02982f
+C4 y vdd 0.09441f
+C5 y x 0.10637f
+C6 en vdd 0.00196f
+C7 y en_b 0.02982f
+C8 en x 0.0201f
+C9 vdd x 0.09501f
+C10 y vss 0.28906f
+C11 x vss 0.2821f
+C12 vdd vss 1.28629f
+.ends
+
+.subckt inv in out vdd vss
+X0 out in vdd vdd sky130_fd_pr__pfet_01v8 ad=0.75 pd=5.6 as=0.75 ps=5.6 w=2.5 l=0.15
+X1 out in vss vss sky130_fd_pr__nfet_01v8 ad=0.3 pd=2.6 as=0.3 ps=2.6 w=1 l=0.15
+C0 in vdd 0.12641f
+C1 out in 0.06222f
+C2 out vdd 0.15515f
+C3 out vss 0.37272f
+C4 vdd vss 1.2028f
+.ends
+
+.subckt dff clk d q qb vdd vss
+XXtg1 d m1 clkn clkp vdd vss tgate
+XXtg2 m3 m1 clkp clkn vdd vss tgate
+XXtg4 s3 s1 clkn clkp vdd vss tgate
+XXtg3 m2 s1 clkp clkn vdd vss tgate
+XXo1 s3 q vdd vss inv
+XXo2 s2 qb vdd vss inv
+XXi1 m1 m2 vdd vss inv
+XXi2 m2 m3 vdd vss inv
+XXi3 s1 s2 vdd vss inv
+XXi4 s2 s3 vdd vss inv
+XXc1 clk clkn vdd vss inv
+XXc2 clkn clkp vdd vss inv
+C0 m2 d 0.0021f
+C1 clkp clk 0.00132f
+C2 d vdd 0.02884f
+C3 m1 d 0.00649f
+C4 clkp q 0
+C5 clkn clk 0.02739f
+C6 qb s2 0.01974f
+C7 q s1 0.01053f
+C8 clkn q 0.00229f
+C9 m2 vdd 0.32559f
+C10 m1 m2 0.41158f
+C11 clkp s1 0.22457f
+C12 m2 s3 0
+C13 m1 vdd 0.26525f
+C14 clkn clkp 1.19756f
+C15 m3 clk 0
+C16 s3 vdd 0.2329f
+C17 m1 s3 0.00154f
+C18 clkn s1 0.08975f
+C19 q s2 0.02854f
+C20 clkp m3 0.14939f
+C21 clkp s2 0.07544f
+C22 m3 s1 0.002f
+C23 clkn m3 0.07627f
+C24 s2 s1 0.10591f
+C25 clkn s2 0.15912f
+C26 d clk 0
+C27 qb vdd 0.01292f
+C28 s3 qb 0.003f
+C29 m3 s2 0.00195f
+C30 d clkp 0.15029f
+C31 m2 clk 0
+C32 clk vdd 0.0154f
+C33 m1 clk 0
+C34 clkn d 0.06186f
+C35 q vdd 0.06464f
+C36 m2 clkp 0.15123f
+C37 s3 q 0.04533f
+C38 clkp vdd 0.2979f
+C39 m1 clkp 0.43641f
+C40 m2 s1 0.03065f
+C41 s3 clkp 0.18566f
+C42 clkn m2 0.11997f
+C43 d m3 0
+C44 s1 vdd 0.39203f
+C45 m1 s1 0.00616f
+C46 clkn vdd 0.29653f
+C47 clkn m1 0.14473f
+C48 s3 s1 0.2053f
+C49 clkn s3 0.04972f
+C50 m2 m3 0.08477f
+C51 m3 vdd 0.04562f
+C52 m1 m3 0.0269f
+C53 m2 s2 0.001f
+C54 qb q 0.01354f
+C55 s2 vdd 0.147f
+C56 m1 s2 0
+C57 clkp qb 0
+C58 s3 s2 0.11401f
+C59 qb s1 0
+C60 clkn qb 0
+C61 clkp vss 0.09211f
+C62 clkn vss 1.42928f
+C63 clk vss 0
+C64 vdd vss -2.53048f
+C65 s3 vss -0.29272f
+C66 s2 vss 0.15739f
+C67 m3 vss -0.26374f
+C68 m2 vss -0.21571f
+C69 qb vss -0.01448f
+C70 q vss -0.1516f
+C71 s1 vss -0.16495f
+C72 m1 vss -0.27861f
+C73 d vss -0.14196f
+.ends
+

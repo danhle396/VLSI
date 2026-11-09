@@ -1,0 +1,20 @@
+* NGSPICE file created from nand.ext - technology: sky130A
+
+.subckt nand a b y vdd vss
+X0 y b vdd vdd sky130_fd_pr__pfet_01v8 ad=0.3875 pd=2.81 as=0.75 ps=5.6 w=2.5 l=0.15
+X1 vdd a y vdd sky130_fd_pr__pfet_01v8 ad=0.75 pd=5.6 as=0.3875 ps=2.81 w=2.5 l=0.15
+X2 a_170_120# b vss vss sky130_fd_pr__nfet_01v8 ad=0.31 pd=2.31 as=0.6 ps=4.6 w=2 l=0.15
+X3 y a a_170_120# vss sky130_fd_pr__nfet_01v8 ad=0.6 pd=4.6 as=0.31 ps=2.31 w=2 l=0.15
+C0 a b 0.05181f
+C1 a_170_120# vdd 0
+C2 b vdd 0.12503f
+C3 y a_170_120# 0.02041f
+C4 y b 0.05172f
+C5 a vdd 0.14467f
+C6 a y 0.10473f
+C7 y vdd 0.2353f
+C8 y vss 0.44414f
+C9 vdd vss 1.63709f
+C10 a_170_120# vss 0.02299f
+.ends
+

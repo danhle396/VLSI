@@ -1,0 +1,59 @@
+* ============================================================
+*  Lab 5 : CMOS D Flip-Flop (master-slave, transmission gate,
+*          positive-edge triggered) - SKY130 1.8 V
+*
+*  clk --[INV]-- clkn --[INV]-- clkp      (local complementary clocks)
+*
+*            MASTER (transparent clk=0)      SLAVE (transparent clk=1)
+*
+*   d --[TG1]--+--[INV]--+--[TG3]--+--[INV]--+--[INV]-- qb
+*     clk=0    |  m1     |  m2  clk=1  s1     |  s2
+*              |         |         |          |
+*              +--[TG2]--[INV]--+  +--[TG4]--[INV]--+
+*                 clk=1     m3        clk=0     s3
+*                                      s3 --[INV]-- q
+*
+*  m2 = d', s1 = m2 = d', s2 = d, s3 = d'
+*  q  = inv(s3) = d      qb = inv(s2) = d'
+*  The two output inverters isolate the storage nodes from the load.
+*
+*  Total: 2 clock INV + 4 TG + 4 core INV + 2 output INV = 24 transistors
+* ============================================================
+
+* ---- Inverter (same as Lab 3: Wn = 1, Wp = 2.5) ----
+*  ad/as/pd/ps/nrd/nrs: area, perimeter and resistance of the diffusion regions
+*  (same formulas as the xschem symbols, 0.29 um = S/D region length).
+.subckt inv in out vdd vss params: wn=1 wp=2.5 l=0.15
+XMP out in vdd vdd sky130_fd_pr__pfet_01v8 W={wp} L={l}
++ ad={wp*0.29} as={wp*0.29} pd={2*(wp+0.29)} ps={2*(wp+0.29)} nrd={0.29/wp} nrs={0.29/wp}
+XMN out in vss vss sky130_fd_pr__nfet_01v8 W={wn} L={l}
++ ad={wn*0.29} as={wn*0.29} pd={2*(wn+0.29)} ps={2*(wn+0.29)} nrd={0.29/wn} nrs={0.29/wn}
+.ends inv
+
+* ---- Transmission gate: conducts when en=1 (en_b=0) ----
+.subckt tgate x y en en_b vdd vss params: wn=1 wp=2.5 l=0.15
+XMN x en   y vss sky130_fd_pr__nfet_01v8 W={wn} L={l}
++ ad={wn*0.29} as={wn*0.29} pd={2*(wn+0.29)} ps={2*(wn+0.29)} nrd={0.29/wn} nrs={0.29/wn}
+XMP x en_b y vdd sky130_fd_pr__pfet_01v8 W={wp} L={l}
++ ad={wp*0.29} as={wp*0.29} pd={2*(wp+0.29)} ps={2*(wp+0.29)} nrd={0.29/wp} nrs={0.29/wp}
+.ends tgate
+
+* ---- Positive-edge D flip-flop ----
+.subckt dff d clk q qb vdd vss
+* local clocks
+Xc1  clk  clkn vdd vss inv
+Xc2  clkn clkp vdd vss inv
+* master latch
+Xtg1 d  m1 clkn clkp vdd vss tgate
+Xi1  m1 m2 vdd vss inv
+Xi2  m2 m3 vdd vss inv
+Xtg2 m3 m1 clkp clkn vdd vss tgate
+* slave latch
+Xtg3 m2 s1 clkp clkn vdd vss tgate
+Xi3  s1 s2 vdd vss inv
+Xi4  s2 s3 vdd vss inv
+Xtg4 s3 s1 clkn clkp vdd vss tgate
+* output buffers
+Xo1  s3 q  vdd vss inv
+Xo2  s2 qb vdd vss inv
+.ends dff

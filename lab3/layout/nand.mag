@@ -1,0 +1,95 @@
+magic
+tech sky130A
+magscale 1 2
+timestamp 1790990973
+<< nwell >>
+rect -20 480 332 1320
+<< nmos >>
+rect 140 120 170 320
+<< pmos >>
+rect 140 600 170 1100
+<< ndiff >>
+rect 80 308 140 320
+rect 80 132 92 308
+rect 126 132 140 308
+rect 80 120 140 132
+rect 170 308 230 320
+rect 170 132 184 308
+rect 218 132 230 308
+rect 170 120 230 132
+<< pdiff >>
+rect 80 1088 140 1100
+rect 80 612 92 1088
+rect 126 612 140 1088
+rect 80 600 140 612
+rect 170 1088 230 1100
+rect 170 612 184 1088
+rect 218 612 230 1088
+rect 170 600 230 612
+<< ndiffc >>
+rect 92 132 126 308
+rect 184 132 218 308
+<< pdiffc >>
+rect 92 612 126 1088
+rect 184 612 218 1088
+<< psubdiff >>
+rect 80 17 230 42
+rect 80 -17 92 17
+rect 126 -17 230 17
+rect 80 -42 230 -17
+<< nsubdiff >>
+rect 80 1245 230 1270
+rect 80 1211 92 1245
+rect 126 1211 230 1245
+rect 80 1186 230 1211
+<< psubdiffcont >>
+rect 92 -17 126 17
+<< nsubdiffcont >>
+rect 92 1211 126 1245
+<< poly >>
+rect 140 1100 170 1126
+rect 140 488 170 600
+rect 84 471 170 488
+rect 84 437 100 471
+rect 134 437 170 471
+rect 84 420 170 437
+rect 140 320 170 420
+rect 140 94 170 120
+<< polycont >>
+rect 100 437 134 471
+<< locali >>
+rect 92 1245 126 1261
+rect 92 1088 126 1211
+rect 92 596 126 612
+rect 184 1088 218 1104
+rect 84 471 150 487
+rect 84 437 100 471
+rect 134 437 150 471
+rect 84 421 150 437
+rect 92 308 126 324
+rect 92 17 126 132
+rect 184 308 218 612
+rect 184 116 218 132
+rect 92 -33 126 -17
+<< viali >>
+rect 92 1211 126 1245
+rect 92 -17 126 17
+<< metal1 >>
+rect 0 1245 312 1276
+rect 0 1211 92 1245
+rect 126 1211 312 1245
+rect 0 1180 312 1211
+rect 0 17 312 48
+rect 0 -17 92 17
+rect 126 -17 312 17
+rect 0 -48 312 -17
+<< labels >>
+rlabel locali 84 421 150 487 0 in
+port 1 nsew signal input
+rlabel locali 184 520 218 580 0 out
+port 2 nsew signal output
+rlabel metal1 0 1180 312 1276 0 vdd
+port 3 nsew signal bidirectional
+rlabel metal1 0 -48 312 48 0 vss
+port 4 nsew signal bidirectional
+<< end >>

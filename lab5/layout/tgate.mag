@@ -1,0 +1,112 @@
+magic
+tech sky130A
+magscale 1 2
+timestamp 1790961157
+<< checkpaint >>
+rect -1280 -780 1698 2580
+rect -1260 -1308 1678 -780
+<< nwell >>
+rect -20 480 438 1320
+<< nmos >>
+rect 194 120 224 320
+<< pmos >>
+rect 194 600 224 1100
+<< ndiff >>
+rect 80 308 194 320
+rect 80 132 92 308
+rect 126 132 194 308
+rect 80 120 194 132
+rect 224 308 338 320
+rect 224 132 292 308
+rect 326 132 338 308
+rect 224 120 338 132
+<< pdiff >>
+rect 80 1088 194 1100
+rect 80 612 92 1088
+rect 126 612 194 1088
+rect 80 600 194 612
+rect 224 1088 338 1100
+rect 224 612 292 1088
+rect 326 612 338 1088
+rect 224 600 338 612
+<< ndiffc >>
+rect 92 132 126 308
+rect 292 132 326 308
+<< pdiffc >>
+rect 92 612 126 1088
+rect 292 612 326 1088
+<< psubdiff >>
+rect 80 17 338 42
+rect 80 -17 92 17
+rect 126 -17 338 17
+rect 80 -42 338 -17
+<< nsubdiff >>
+rect 80 1245 338 1270
+rect 80 1211 92 1245
+rect 126 1211 338 1245
+rect 80 1186 338 1211
+<< psubdiffcont >>
+rect 92 -17 126 17
+<< nsubdiffcont >>
+rect 92 1211 126 1245
+<< poly >>
+rect 194 1100 224 1126
+rect 194 560 224 600
+rect 176 544 242 560
+rect 176 510 192 544
+rect 226 510 242 544
+rect 176 494 242 510
+rect 176 404 242 420
+rect 176 370 192 404
+rect 226 370 242 404
+rect 176 354 242 370
+rect 194 320 224 354
+rect 194 94 224 120
+<< polycont >>
+rect 192 510 226 544
+rect 192 370 226 404
+<< locali >>
+rect 92 1245 126 1268
+rect 92 1188 126 1211
+rect 92 1088 126 1104
+rect 92 308 126 612
+rect 292 1088 326 1104
+rect 176 544 242 554
+rect 176 510 192 544
+rect 226 510 242 544
+rect 176 500 242 510
+rect 176 404 242 414
+rect 176 370 192 404
+rect 226 370 242 404
+rect 176 360 242 370
+rect 92 116 126 132
+rect 292 308 326 612
+rect 292 116 326 132
+rect 92 17 126 40
+rect 92 -40 126 -17
+<< viali >>
+rect 92 1211 126 1245
+rect 92 -17 126 17
+<< metal1 >>
+rect 0 1245 418 1276
+rect 0 1211 92 1245
+rect 126 1211 418 1245
+rect 0 1180 418 1211
+rect 0 17 418 48
+rect 0 -17 92 17
+rect 126 -17 418 17
+rect 0 -48 418 -17
+<< labels >>
+rlabel locali 92 520 126 580 0 x
+port 5 nsew signal bidirectional
+rlabel locali 292 520 326 580 0 y
+port 6 nsew signal bidirectional
+rlabel locali 176 360 242 414 0 en
+port 7 nsew signal input
+rlabel locali 176 500 242 554 0 en_b
+port 8 nsew signal input
+rlabel metal1 0 1180 418 1276 0 vdd
+port 9 nsew signal bidirectional
+rlabel metal1 0 -48 418 48 0 vss
+port 10 nsew signal bidirectional
+<< end >>

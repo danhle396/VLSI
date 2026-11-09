@@ -1,0 +1,15 @@
+# xschemrc cho lab: thu vien SKY130 + symbol trong thu muc nay.
+# Chay xschem ngay trong thu muc nay de file nay duoc doc.
+# Tu tim PDK (volare) theo kieu duong dan Cygwin / WSL / Windows.
+foreach p {
+  /cygdrive/c/Users/ADMIN/.volare/volare/sky130/versions/c6d73a35f524070e85faff4a6a9eef49553ebc2b
+  /mnt/c/Users/ADMIN/.volare/volare/sky130/versions/c6d73a35f524070e85faff4a6a9eef49553ebc2b
+  C:/Users/ADMIN/.volare/volare/sky130/versions/c6d73a35f524070e85faff4a6a9eef49553ebc2b
+} {
+  if {[file isdir $p/sky130A]} { set env(PDK_ROOT) $p; break }
+}
+set env(PDK) sky130A
+source $env(PDK_ROOT)/sky130A/libs.tech/xschem/xschemrc
+append XSCHEM_LIBRARY_PATH :[file dirname [file normalize [info script]]]
+set netlist_dir [file dirname [file normalize [info script]]]/simulation
+set XSCHEM_START_WINDOW {}

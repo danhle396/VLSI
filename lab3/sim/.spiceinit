@@ -1,0 +1,5 @@
+* Cau hinh ngspice cho PDK SKY130 (ngspice tu doc file nay trong thu muc chay)
+set ngbehavior=hsa
+set ng_nomodcheck
+set skywaterpdk
+set num_threads=4

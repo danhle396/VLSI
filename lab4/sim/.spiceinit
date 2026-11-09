@@ -1,0 +1,13 @@
+* Cau hinh ngspice cho PDK SKY130 (ngspice tu doc file nay trong thu muc chay)
+set ngbehavior=hsa
+set ng_nomodcheck
+set skywaterpdk
+set num_threads=4
+* Giao dien cua so plot: nen trang, net day, mau de phan biet
+set color0=white
+set color1=gray
+set color2=blue
+set color3=red
+set color4=green
+set color5=black
+set xbrushwidth=2

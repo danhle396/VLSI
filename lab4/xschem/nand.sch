@@ -1,0 +1,81 @@
+v {xschem version=3.4.5 file_version=1.2}
+G {}
+K {}
+V {}
+S {}
+E {}
+C {sky130_fd_pr/pfet_01v8.sym} -80 -80 0 0 {name=MPA
+W=2.5
+L=0.15
+nf=1
+mult=1
+model=pfet_01v8
+spiceprefix=X}
+C {sky130_fd_pr/pfet_01v8.sym} 120 -80 0 0 {name=MPB
+W=2.5
+L=0.15
+nf=1
+mult=1
+model=pfet_01v8
+spiceprefix=X}
+C {sky130_fd_pr/nfet_01v8.sym} 0 60 0 0 {name=MNA
+W=2
+L=0.15
+nf=1
+mult=1
+model=nfet_01v8
+spiceprefix=X}
+C {sky130_fd_pr/nfet_01v8.sym} 0 160 0 0 {name=MNB
+W=2
+L=0.15
+nf=1
+mult=1
+model=nfet_01v8
+spiceprefix=X}
+N -60 -50 -60 0 {lab=y}
+N 140 -50 140 0 {lab=y}
+N -60 0 20 0 {lab=y}
+N 20 0 140 0 {lab=y}
+N 20 0 20 30 {lab=y}
+N 140 0 240 0 {lab=y}
+N 20 90 20 110 {lab=n1}
+N 20 110 20 130 {lab=n1}
+C {lab_pin.sym} 20 110 0 0 {name=l6
+lab=n1}
+N -60 -140 -60 -110 {lab=vdd}
+N 140 -140 140 -110 {lab=vdd}
+N -200 -140 -60 -140 {lab=vdd}
+N -60 -140 140 -140 {lab=vdd}
+N -60 -80 -30 -80 {lab=vdd}
+C {lab_pin.sym} -30 -80 0 1 {name=l1
+lab=vdd}
+N 140 -80 170 -80 {lab=vdd}
+C {lab_pin.sym} 170 -80 0 1 {name=l2
+lab=vdd}
+N 20 190 20 220 {lab=vss}
+N -200 220 20 220 {lab=vss}
+N 20 60 50 60 {lab=vss}
+C {lab_pin.sym} 50 60 0 1 {name=l3
+lab=vss}
+N 20 160 50 160 {lab=vss}
+C {lab_pin.sym} 50 160 0 1 {name=l4
+lab=vss}
+N -100 -80 -140 -80 {lab=a}
+N -140 -80 -140 60 {lab=a}
+N -200 60 -140 60 {lab=a}
+N -140 60 -20 60 {lab=a}
+N -200 160 -20 160 {lab=b}
+N 100 -80 80 -80 {lab=b}
+C {lab_pin.sym} 80 -80 0 0 {name=l5
+lab=b}
+C {ipin.sym} -200 60 0 0 {name=p1
+lab=a}
+C {ipin.sym} -200 160 0 0 {name=p2
+lab=b}
+C {opin.sym} 240 0 0 0 {name=p3
+lab=y}
+C {iopin.sym} -200 -140 0 1 {name=p4
+lab=vdd}
+C {iopin.sym} -200 220 0 1 {name=p5
+lab=vss}
+T {CMOS NAND - SKY130} -200 -220 0 0 0.4 0.4 {}
